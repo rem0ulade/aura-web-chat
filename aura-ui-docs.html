@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura App - UI Design Docs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0D0D0F;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #22C55E, #4ADE80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: #71717A;
+            margin-bottom: 24px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .thumb {
+            background: #18181B;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .thumb:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .thumb img {
+            width: 100%;
+            aspect-ratio: 1260/2736;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .thumb-label {
+            padding: 12px;
+            font-size: 14px;
+            color: #A1A1AA;
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 100;
+            overflow: auto;
+            padding: 40px;
+        }
+        
+        .lightbox.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+        }
+        
+        .lightbox .close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 32px;
+            cursor: pointer;
+            color: white;
+            opacity: 0.7;
+        }
+        
+        .lightbox .close:hover {
+            opacity: 1;
+        }
+        
+        .lightbox .nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            cursor: pointer;
+            color: white;
+            opacity: 0.5;
+            padding: 20px;
+        }
+        
+        .lightbox .nav:hover {
+            opacity: 1;
+        }
+        
+        .lightbox .prev { left: 20px; }
+        .lightbox .next { right: 20px; }
+        
+        .notes {
+            background: #18181B;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 32px;
+        }
+        
+        .notes h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: #22C55E;
+        }
+        
+        .notes ul {
+            color: #A1A1AA;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aura App - UI Design Docs</h1>
+    <p class="subtitle">12 Screenshots für UI Designer • Auf Klick vergrößern</p>
+    
+    <div class="grid">
+        <div class="thumb" onclick="openLightbox(0)">
+            <img src="chatscreen.png" alt="Chat Screen">
+            <div class="thumb-label">Chat Screen</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(1)">
+            <img src="menue_drawer.png" alt="Menu Drawer">
+            <div class="thumb-label">Menu Drawer</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(2)">
+            <img src="history.png" alt="History">
+            <div class="thumb-label">History</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(3)">
+            <img src="personas.png" alt="Personas">
+            <div class="thumb-label">Personas</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(4)">
+            <img src="memory.png" alt="Memory">
+            <div class="thumb-label">Memory</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(5)">
+            <img src="skills.png" alt="Skills">
+            <div class="thumb-label">Skills</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(6)">
+            <img src="parameter.png" alt="Parameter">
+            <div class="thumb-label">Parameter</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(7)">
+            <img src="api_connectors.png" alt="API Connectors">
+            <div class="thumb-label">API Connectors</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(8)">
+            <img src="agent.png" alt="Agent">
+            <div class="thumb-label">Agent</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(9)">
+            <img src="preffered.png" alt="Preferred">
+            <div class="thumb-label">Preferred</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(10)">
+            <img src="system_prompt.png" alt="System Prompt">
+            <div class="thumb-label">System Prompt</div>
+        </div>
+        <div class="thumb" onclick="openLightbox(11)">
+            <img src="allgemein.png" alt="Allgemein">
+            <div class="thumb-label">Allgemein</div>
+        </div>
+    </div>
+    
+    <div class="notes">
+        <h2>Design Specs (von Screenshots abgeleitet)</h2>
+        <ul>
+            <li><strong>Hintergrund:</strong> #1C1B22 (Dunkelgrau)</li>
+            <li><strong>Akzent-Farbe:</strong> #22C55E (Aura Grün)</li>
+            <li><strong>User Bubble:</strong> #E5E5E5 (Hellgrau)</li>
+            <li><strong>AI Bubble:</strong> #22C55E (Grün)</li>
+            <li><strong>Text:</strong> Weiß / #71717A</li>
+            <li><strong>Cards:</strong> #27272A mit #22C55E Border</li>
+            <li><strong>Font:</strong> System (-apple-system)</li>
+            <li><strong>Ecken:</strong> 16px radius</li>
+            <li><strong>Icons:</strong> Lucide/Phosphor Style</li>
+        </ul>
+    </div>
+    
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">×</span>
+        <span class="nav prev" onclick="nav(-1)">‹</span>
+        <img id="lightbox-img" src="">
+        <span class="nav next" onclick="nav(1)">›</span>
+    </div>
+    
+    <script>
+        const images = [
+            'chatscreen.png', 'menue_drawer.png', 'history.png', 'personas.png', 'memory.png',
+            'skills.png', 'parameter.png', 'api_connectors.png', 'agent.png', 'preffered.png',
+            'system_prompt.png', 'allgemein.png'
+        ];
+        let current = 0;
+        
+        function openLightbox(index) {
+            current = index;
+            document.getElementById('lightbox-img').src = images[index];
+            document.getElementById('lightbox').classList.add('active');
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+        
+        function nav(dir) {
+            current = (current + dir + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[current];
+        }
+        
+        document.addEventListener('keydown', e => {
+            if(e.key === 'Escape') closeLightbox();
+            if(e.key === 'ArrowLeft') nav(-1);
+            if(e.key === 'ArrowRight') nav(1);
+        });
+    </script>
+</body>
+</html>
