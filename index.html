@@ -20,41 +20,37 @@
       
       <nav class=sidebar-nav>
         <div class="nav-section">
-          <div class="nav-section-title">Personas</div>
+          <div class="nav-section-title">Navigation</div>
           <ul class="nav-list">
-            <li class="nav-item" data-persona="developer">
-              <span class="nav-icon">👨‍💻</span>
-              <span class="nav-text">@developer</span>
-            </li>
-            <li class="nav-item" data-persona="coach">
-              <span class="nav-icon">🏃</span>
-              <span class="nav-text">@coach</span>
-            </li>
-            <li class="nav-item" data-persona="analyst">
-              <span class="nav-icon">📊</span>
-              <span class="nav-text">@analyst</span>
-            </li>
-            <li class="nav-item" data-persona="writer">
-              <span class="nav-icon">✍️</span>
-              <span class="nav-text">@writer</span>
-            </li>
-            <li class="nav-item" data-persona="designer">
-              <span class="nav-icon">🎨</span>
-              <span class="nav-text">@designer</span>
-            </li>
+            <li class="nav-item"><span class="nav-icon">📜</span><span class="nav-text">History</span></li>
+            <li class="nav-item"><span class="nav-icon">📁</span><span class="nav-text">Projects</span></li>
+            <li class="nav-item"><span class="nav-icon">➕</span><span class="nav-text">New Chat</span></li>
           </ul>
         </div>
         
-        <div class=nav-section>
-          <div class=nav-section-title>Agent</div>
-          <ul class=nav-list>
-            <li class=nav-item agent-item>
-              <span class=nav-icon>
-                <span class=heartbeat-indicator></span>
-              </span>
-              <span class=nav-text>Heartbeat</span>
-              <span class=agent-status>24/7</span>
-            </li>
+        <div class="nav-section">
+          <div class="nav-section-title">Aura</div>
+          <ul class="nav-list">
+            <li class="nav-item"><span class="nav-icon">👤</span><span class="nav-text">Personas</span></li>
+            <li class="nav-item"><span class="nav-icon">💾</span><span class="nav-text">Memory</span></li>
+            <li class="nav-item"><span class="nav-icon">⚡</span><span class="nav-text">Skills</span></li>
+          </ul>
+        </div>
+        
+        <div class="nav-section">
+          <div class="nav-section-title">Agent</div>
+          <ul class="nav-list">
+            <li class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Parameter</span></li>
+          </ul>
+        </div>
+        
+        <div class="nav-section">
+          <div class="nav-section-title">Settings</div>
+          <ul class="nav-list">
+            <li class="nav-item"><span class="nav-icon">🔌</span><span class="nav-text">API & Connectors</span></li>
+            <li class="nav-item"><span class="nav-icon">📝</span><span class="nav-text">System Prompt</span></li>
+            <li class="nav-item"><span class="nav-icon">⭐</span><span class="nav-text">Preferred</span></li>
+            <li class="nav-item" data-danger="true"><span class="nav-icon">⚠️</span><span class="nav-text">Dangerzone</span></li>
           </ul>
         </div>
       </nav>
@@ -74,6 +70,11 @@
     
     <main class=chat-main>
       <header class=chat-header>
+        <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle Sidebar">
+          <svg width=20 height=20 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"></path>
+          </svg>
+        </button>
         <div class=chat-title>
           <h1>Chat</h1>
           <span class=model-badge>GPT-4o</span>

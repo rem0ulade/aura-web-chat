@@ -157,6 +157,14 @@ body {
   font-weight: 500;
 }
 
+.nav-item[data-danger="true"] {
+  color: var(--heartbeat);
+}
+
+.nav-item[data-danger="true"]:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
 .agent-item {
   position: relative;
 }
@@ -274,6 +282,26 @@ body {
 .chat-actions {
   display: flex;
   gap: 8px;
+}
+
+.sidebar-toggle {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-toggle:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
 }
 
 .icon-button {
@@ -505,6 +533,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .sidebar-toggle {
+    display: flex;
+  }
+  
   .sidebar {
     position: fixed;
     left: -280px;
