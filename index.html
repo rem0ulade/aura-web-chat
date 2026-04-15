@@ -22,7 +22,7 @@
         <div class="nav-section">
           <div class="nav-section-title">Navigation</div>
           <ul class="nav-list">
-            <li class="nav-item"><span class="nav-icon">📜</span><span class="nav-text">History</span></li>
+            <li class="nav-item" data-drawer="history"><span class="nav-icon">📜</span><span class="nav-text">History</span></li>
             <li class="nav-item"><span class="nav-icon">📁</span><span class="nav-text">Projects</span></li>
             <li class="nav-item"><span class="nav-icon">➕</span><span class="nav-text">New Chat</span></li>
           </ul>
@@ -31,7 +31,7 @@
         <div class="nav-section">
           <div class="nav-section-title">Aura</div>
           <ul class="nav-list">
-            <li class="nav-item"><span class="nav-icon">👤</span><span class="nav-text">Personas</span></li>
+            <li class="nav-item" data-drawer="personas"><span class="nav-icon">👤</span><span class="nav-text">Personas</span></li>
             <li class="nav-item"><span class="nav-icon">💾</span><span class="nav-text">Memory</span></li>
             <li class="nav-item"><span class="nav-icon">⚡</span><span class="nav-text">Skills</span></li>
           </ul>
@@ -40,7 +40,7 @@
         <div class="nav-section">
           <div class="nav-section-title">Agent</div>
           <ul class="nav-list">
-            <li class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Parameter</span></li>
+            <li class="nav-item" data-drawer="parameter"><span class="nav-icon">⚙️</span><span class="nav-text">Parameter</span></li>
           </ul>
         </div>
         
@@ -115,6 +115,19 @@
         </div>
       </div>
     </main>
+  </div>
+  
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <span class="drawer-title" id="drawer-title">Drawer</span>
+      <button class="drawer-close" id="drawer-close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-content" id="drawer-content"></div>
   </div>
   
   <script src=script.js></script>
