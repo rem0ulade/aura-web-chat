@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURA — Brand Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:      #3DDD84;
+  --green-mid:  #2ABD6E;
+  --green-dark: #1A8A4E;
+  --black:      #0A0A0A;
+  --off-black:  #111111;
+  --surface:    #181818;
+  --border:     #252525;
+  --text:       #F0F0F0;
+  --text-2:     #888;
+  --text-3:     #444;
+  --mono: 'DM Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+}
+
+body {
+  background: #080808;
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
+}
+
+/* ── LAYOUT ── */
+.page { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+
+.section { margin-bottom: 100px; }
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+.section-sub {
+  font-size: 15px;
+  color: var(--text-2);
+  margin-bottom: 48px;
+  max-width: 540px;
+}
+
+/* ── HEADER ── */
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 80px;
+}
+.brand-wordmark {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 6px;
+  color: var(--text);
+}
+.brand-wordmark span { color: var(--green); }
+.brand-version {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 2px;
+}
+
+/* ── LOGO SHOWCASE ── */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.logo-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-cell-label {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+/* Dark bg */
+.bg-dark  { background: var(--black); }
+/* Light bg */
+.bg-light { background: #F5F5F3; }
+/* Green bg */
+.bg-green { background: var(--green); }
+
+/* ── THE LOGO MARK (SVG inline) ── */
+.logo-mark { display: block; }
+
+/* ── APP ICON SECTION ── */
+.icon-grid {
+  display: flex;
+  gap: 32px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.icon-item-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 1px;
+}
+
+/* ── SPLASH SCREEN ── */
+.splash-preview {
+  width: 320px;
+  height: 693px; /* iPhone proportions */
+  background: var(--black);
+  border-radius: 36px;
+  border: 1.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 0 6px #0c0c0c;
+}
+.splash-glow {
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(61,221,132,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.splash-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(61,221,132,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61,221,132,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.splash-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.splash-tagline {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(61,221,132,0.5);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.splash-loader {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.splash-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: sdot 1.4s ease-in-out infinite;
+}
+.splash-dot:nth-child(2) { animation-delay: 0.2s; }
+.splash-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes sdot { 0%,80%,100%{opacity:0.2;transform:scale(0.8)} 40%{opacity:1;transform:scale(1)} }
+
+/* ── COLOR PALETTE ── */
+.palette {
+  display: flex;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100px;
+  margin-bottom: 40px;
+}
+.swatch { flex: 1; }
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+.color-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.color-preview { height: 80px; }
+.color-info {
+  padding: 12px;
+  background: var(--surface);
+}
+.color-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+.color-hex {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-3);
+}
+.color-usage {
+  font-size: 10px;
+  color: var(--text-3);
+  margin-top: 3px;
+}
+
+/* ── TYPOGRAPHY ── */
+.type-grid { display: flex; flex-direction: column; gap: 32px; }
+.type-sample {
+  padding: 28px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.type-meta {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-3);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* ── DO / DON'T ── */
+.do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.do-card, .dont-card {
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid;
+}
+.do-card {
+  background: rgba(61,221,132,0.04);
+  border-color: rgba(61,221,132,0.2);
+}
+.dont-card {
+  background: rgba(255,80,80,0.04);
+  border-color: rgba(255,80,80,0.2);
+}
+.do-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--green);
+  margin-bottom: 14px;
+}
+.dont-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #ff6060;
+  margin-bottom: 14px;
+}
+.do-item, .dont-item {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-bottom: 7px;
+  display: flex;
+  gap: 8px;
+}
+
+/* ── USAGE EXAMPLES ── */
+.usage-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.usage-chip {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── MOTION & ANIMATION SPEC ── */
+.motion-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.motion-table th, .motion-table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.motion-table th {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-3);
+  text-transform: uppercase;
+  background: var(--surface);
+}
+.motion-table td:first-child { color: var(--text); font-weight: 500; }
+.motion-table td:not(:first-child) { font-family: var(--mono); color: var(--text-3); font-size: 11px; }
+
+/* ── EXPORT INFO ── */
+.export-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.export-card {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.export-icon { font-size: 24px; margin-bottom: 10px; }
+.export-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+.export-detail { font-family: var(--mono); font-size: 10px; color: var(--text-3); line-height: 1.7; }
+
+/* Divider */
+.rule { height: 1px; background: var(--border); margin: 60px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="brand-header">
+    <div class="brand-wordmark">AU<span>R</span>A</div>
+    <div class="brand-version">Brand Kit · v1.0 · 2026</div>
+  </div>
+
+  <!-- ════════════════════════════════
+       01 — LOGO MARK
+  ════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">01</div>
+    <div class="section-title">Logo Mark</div>
+    <div class="section-sub">Das stilisierte A kombiniert präzise Geometrie mit einer subtilen Unterbrechung — das "Signal" das durch das A fließt. Minimalistisch, tech-affin, einprägsam.</div>
+
+    <div class="logo-grid">
+
+      <!-- Dark background -->
+      <div class="logo-cell bg-dark">
+        <svg class="logo-mark" width="96" height="96" viewBox="0 0 96 96" fill="none">
+          <!-- Outer glow -->
+          <defs>
+            <filter id="glow-d" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <linearGradient id="grad-d" x1="16" y1="76" x2="80" y2="20" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#2ABD6E"/>
+              <stop offset="100%" stop-color="#3DDD84"/>
+            </linearGradient>
+          </defs>
+          <!-- Left stroke of A -->
+          <path d="M48 14 L16 76" stroke="url(#grad-d)" stroke-width="5" stroke-linecap="round" filter="url(#glow-d)"/>
+          <!-- Right stroke of A -->
+          <path d="M48 14 L80 76" stroke="url(#grad-d)" stroke-width="5" stroke-linecap="round" filter="url(#glow-d)"/>
+          <!-- Crossbar — left half only, gap in middle = "signal" -->
+          <path d="M30 54 L44 54" stroke="url(#grad-d)" stroke-width="4" stroke-linecap="round" filter="url(#glow-d)"/>
+          <!-- Signal dot — the break -->
+          <circle cx="48" cy="54" r="3.5" fill="#3DDD84" filter="url(#glow-d)"/>
+          <!-- Crossbar right half -->
+          <path d="M52 54 L66 54" stroke="url(#grad-d)" stroke-width="4" stroke-linecap="round" filter="url(#glow-d)"/>
+        </svg>
+        <div class="logo-cell-label">Primary · Dark</div>
+      </div>
+
+      <!-- With wordmark dark -->
+      <div class="logo-cell bg-dark" style="gap:14px; flex-direction:column">
+        <svg class="logo-mark" width="56" height="56" viewBox="0 0 96 96" fill="none">
+          <defs>
+            <linearGradient id="grad-w" x1="16" y1="76" x2="80" y2="20" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#2ABD6E"/>
+              <stop offset="100%" stop-color="#3DDD84"/>
+            </linearGradient>
+            <filter id="glow-w"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path d="M48 14 L16 76" stroke="url(#grad-w)" stroke-width="5" stroke-linecap="round" filter="url(#glow-w)"/>
+          <path d="M48 14 L80 76" stroke="url(#grad-w)" stroke-width="5" stroke-linecap="round" filter="url(#glow-w)"/>
+          <path d="M30 54 L44 54" stroke="url(#grad-w)" stroke-width="4" stroke-linecap="round" filter="url(#glow-w)"/>
+          <circle cx="48" cy="54" r="3.5" fill="#3DDD84" filter="url(#glow-w)"/>
+          <path d="M52 54 L66 54" stroke="url(#grad-w)" stroke-width="4" stroke-linecap="round" filter="url(#glow-w)"/>
+        </svg>
+        <div style="font-family:'DM Mono',monospace; font-size:18px; font-weight:500; letter-spacing:6px; color:#F0F0F0">AU<span style="color:#3DDD84">R</span>A</div>
+        <div class="logo-cell-label">Logo + Wordmark · Dark</div>
+      </div>
+
+      <!-- Green background -->
+      <div class="logo-cell bg-green">
+        <svg class="logo-mark" width="96" height="96" viewBox="0 0 96 96" fill="none">
+          <path d="M48 14 L16 76" stroke="#0A0A0A" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M48 14 L80 76" stroke="#0A0A0A" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M30 54 L44 54" stroke="#0A0A0A" stroke-width="4.5" stroke-linecap="round"/>
+          <circle cx="48" cy="54" r="3.5" fill="#0A0A0A"/>
+          <path d="M52 54 L66 54" stroke="#0A0A0A" stroke-width="4.5" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-cell-label">Reversed · Green</div>
+      </div>
+
+      <!-- Light background -->
+      <div class="logo-cell bg-light">
+        <svg class="logo-mark" width="96" height="96" viewBox="0 0 96 96" fill="none">
+          <defs>
+            <linearGradient id="grad-l" x1="16" y1="76" x2="80" y2="20" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#1A8A4E"/>
+              <stop offset="100%" stop-color="#2ABD6E"/>
+            </linearGradient>
+          </defs>
+          <path d="M48 14 L16 76" stroke="url(#grad-l)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M48 14 L80 76" stroke="url(#grad-l)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M30 54 L44 54" stroke="url(#grad-l)" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="48" cy="54" r="3.5" fill="#1A8A4E"/>
+          <path d="M52 54 L66 54" stroke="url(#grad-l)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-cell-label" style="color:#999">Light Background</div>
+      </div>
+
+      <!-- Monochrome white -->
+      <div class="logo-cell bg-dark" style="background:#1a1a1a">
+        <svg class="logo-mark" width="96" height="96" viewBox="0 0 96 96" fill="none">
+          <path d="M48 14 L16 76" stroke="#F0F0F0" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+          <path d="M48 14 L80 76" stroke="#F0F0F0" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+          <path d="M30 54 L44 54" stroke="#F0F0F0" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+          <circle cx="48" cy="54" r="3.5" fill="#F0F0F0" opacity="0.9"/>
+          <path d="M52 54 L66 54" stroke="#F0F0F0" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+        </svg>
+        <div class="logo-cell-label">Monochrome · White</div>
+      </div>
+
+      <!-- Minimum size -->
+      <div class="logo-cell bg-dark" style="background:#0f0f0f">
+        <div style="display:flex; gap:24px; align-items:center">
+          <svg width="48" height="48" viewBox="0 0 96 96" fill="none">
+            <defs><linearGradient id="grad-s" x1="16" y1="76" x2="80" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2ABD6E"/><stop offset="100%" stop-color="#3DDD84"/></linearGradient></defs>
+            <path d="M48 14 L16 76" stroke="url(#grad-s)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M48 14 L80 76" stroke="url(#grad-s)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M30 54 L44 54" stroke="url(#grad-s)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="48" cy="54" r="3.5" fill="#3DDD84"/>
+            <path d="M52 54 L66 54" stroke="url(#grad-s)" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <svg width="32" height="32" viewBox="0 0 96 96" fill="none">
+            <defs><linearGradient id="grad-xs" x1="16" y1="76" x2="80" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2ABD6E"/><stop offset="100%" stop-color="#3DDD84"/></linearGradient></defs>
+            <path d="M48 14 L16 76" stroke="url(#grad-xs)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M48 14 L80 76" stroke="url(#grad-xs)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M30 54 L44 54" stroke="url(#grad-xs)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="48" cy="54" r="3.5" fill="#3DDD84"/>
+            <path d="M52 54 L66 54" stroke="url(#grad-xs)" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <svg width="20" height="20" viewBox="0 0 96 96" fill="none">
+            <defs><linearGradient id="grad-xxs" x1="16" y1="76" x2="80" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2ABD6E"/><stop offset="100%" stop-color="#3DDD84"/></linearGradient></defs>
+            <path d="M48 14 L16 76" stroke="url(#grad-xxs)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M48 14 L80 76" stroke="url(#grad-xxs)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M30 54 L44 54" stroke="url(#grad-xxs)" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="48" cy="54" r="4" fill="#3DDD84"/>
+            <path d="M52 54 L66 54" stroke="url(#grad-xxs)" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-cell-label">48px · 32px · 20px</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       02 — APP ICON
+  ════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">02</div>
+    <div class="section-title">App Icon</div>
+    <div class="section-sub">iOS App Icon in allen benötigten Größen. Das Logo zentriert auf tiefem Schwarz mit einem subtilen Glow — klar erkennbar selbst als 29px Notification Icon.</div>
+
+    <div class="icon-grid">
+
+      <!-- 1024 App Store -->
+      <div class="icon-item">
+        <svg width="180" height="180" viewBox="0 0 1024 1024" fill="none" style="border-radius:22.5%">
+          <rect width="1024" height="1024" fill="#0A0A0A"/>
+          <!-- Subtle grid texture -->
+          <defs>
+            <pattern id="grid" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
+              <path d="M 64 0 L 0 0 0 64" fill="none" stroke="rgba(61,221,132,0.04)" stroke-width="1"/>
+            </pattern>
+            <radialGradient id="icon-glow" cx="50%" cy="50%" r="45%">
+              <stop offset="0%" stop-color="rgba(61,221,132,0.12)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <filter id="icon-blur" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="12" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <linearGradient id="icon-grad" x1="180" y1="780" x2="844" y2="240" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#2ABD6E"/>
+              <stop offset="100%" stop-color="#5AEDAA"/>
+            </linearGradient>
+          </defs>
+          <rect width="1024" height="1024" fill="url(#grid)"/>
+          <rect width="1024" height="1024" fill="url(#icon-glow)"/>
+          <!-- A mark — centered, large -->
+          <path d="M512 178 L200 790" stroke="url(#icon-grad)" stroke-width="52" stroke-linecap="round" filter="url(#icon-blur)"/>
+          <path d="M512 178 L824 790" stroke="url(#icon-grad)" stroke-width="52" stroke-linecap="round" filter="url(#icon-blur)"/>
+          <path d="M318 562 L460 562" stroke="url(#icon-grad)" stroke-width="44" stroke-linecap="round" filter="url(#icon-blur)"/>
+          <circle cx="512" cy="562" r="38" fill="#3DDD84" filter="url(#icon-blur)"/>
+          <path d="M564 562 L706 562" stroke="url(#icon-grad)" stroke-width="44" stroke-linecap="round" filter="url(#icon-blur)"/>
+        </svg>
+        <div class="icon-item-label">App Store · 1024×1024</div>
+      </div>
+
+      <!-- 120 Home Screen -->
+      <div class="icon-item">
+        <svg width="120" height="120" viewBox="0 0 1024 1024" fill="none" style="border-radius:22.5%">
+          <rect width="1024" height="1024" fill="#0A0A0A"/>
+          <defs>
+            <radialGradient id="ig2" cx="50%" cy="50%" r="45%"><stop offset="0%" stop-color="rgba(61,221,132,0.12)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+            <filter id="ib2"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <linearGradient id="ig2g" x1="180" y1="780" x2="844" y2="240" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2ABD6E"/><stop offset="100%" stop-color="#5AEDAA"/></linearGradient>
+          </defs>
+          <rect width="1024" height="1024" fill="url(#ig2)"/>
+          <path d="M512 178 L200 790" stroke="url(#ig2g)" stroke-width="52" stroke-linecap="round" filter="url(#ib2)"/>
+          <path d="M512 178 L824 790" stroke="url(#ig2g)" stroke-width="52" stroke-linecap="round" filter="url(#ib2)"/>
+          <path d="M318 562 L460 562" stroke="url(#ig2g)" stroke-width="44" stroke-linecap="round" filter="url(#ib2)"/>
+          <circle cx="512" cy="562" r="38" fill="#3DDD84" filter="url(#ib2)"/>
+          <path d="M564 562 L706 562" stroke="url(#ig2g)" stroke-width="44" stroke-linecap="round" filter="url(#ib2)"/>
+        </svg>
+        <div class="icon-item-label">Home Screen · 120×120</div>
+      </div>
+
+      <!-- 60 -->
+      <div class="icon-item">
+        <svg width="60" height="60" viewBox="0 0 1024 1024" fill="none" style="border-radius:22.5%">
+          <rect width="1024" height="1024" fill="#0A0A0A"/>
+          <defs>
+            <filter id="ib3"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <linearGradient id="ig3g" x1="180" y1="780" x2="844" y2="240" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2ABD6E"/><stop offset="100%" stop-color="#5AEDAA"/></linearGradient>
+          </defs>
+          <path d="M512 178 L200 790" stroke="url(#ig3g)" stroke-width="52" stroke-linecap="round" filter="url(#ib3)"/>
+          <path d="M512 178 L824 790" stroke="url(#ig3g)" stroke-width="52" stroke-linecap="round" filter="url(#ib3)"/>
+          <path d="M318 562 L460 562" stroke="url(#ig3g)" stroke-width="44" stroke-linecap="round" filter="url(#ib3)"/>
+          <circle cx="512" cy="562" r="38" fill="#3DDD84" filter="url(#ib3)"/>
+          <path d="M564 562 L706 562" stroke="url(#ig3g)" stroke-width="44" stroke-linecap="round" filter="url(#ib3)"/>
+        </svg>
+        <div class="icon-item-label">60×60</div>
+      </div>
+
+      <!-- 40 Spotlight -->
+      <div class="icon-item">
+        <svg width="40" height="40" viewBox="0 0 1024 1024" fill="none" style="border-radius:22.5%">
+          <rect width="1024" height="1024" fill="#0A0A0A"/>
+          <defs>
+            <filter id="ib4"><feGaussianBlur stdDeviation="14" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <linearGradient id="ig4g" x1="180" y1="780" x2="844" y2="240" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2ABD6E"/><stop offset="100%" stop-color="#5AEDAA"/></linearGradient>
+          </defs>
+          <path d="M512 178 L200 790" stroke="url(#ig4g)" stroke-width="56" stroke-linecap="round" filter="url(#ib4)"/>
+          <path d="M512 178 L824 790" stroke="url(#ig4g)" stroke-width="56" stroke-linecap="round" filter="url(#ib4)"/>
+          <path d="M318 562 L460 562" stroke="url(#ig4g)" stroke-width="48" stroke-linecap="round" filter="url(#ib4)"/>
+          <circle cx="512" cy="562" r="44" fill="#3DDD84" filter="url(#ib4)"/>
+          <path d="M564 562 L706 562" stroke="url(#ig4g)" stroke-width="48" stroke-linecap="round" filter="url(#ib4)"/>
+        </svg>
+        <div class="icon-item-label">Spotlight · 40×40</div>
+      </div>
+
+      <!-- 29 Settings -->
+      <div class="icon-item">
+        <svg width="29" height="29" viewBox="0 0 1024 1024" fill="none" style="border-radius:22.5%">
+          <rect width="1024" height="1024" fill="#0A0A0A"/>
+          <defs>
+            <filter id="ib5"><feGaussianBlur stdDeviation="16" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <linearGradient id="ig5g" x1="180" y1="780" x2="844" y2="240" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2ABD6E"/><stop offset="100%" stop-color="#5AEDAA"/></linearGradient>
+          </defs>
+          <path d="M512 178 L200 790" stroke="url(#ig5g)" stroke-width="60" stroke-linecap="round" filter="url(#ib5)"/>
+          <path d="M512 178 L824 790" stroke="url(#ig5g)" stroke-width="60" stroke-linecap="round" filter="url(#ib5)"/>
+          <path d="M318 562 L460 562" stroke="url(#ig5g)" stroke-width="52" stroke-linecap="round" filter="url(#ib5)"/>
+          <circle cx="512" cy="562" r="50" fill="#3DDD84" filter="url(#ib5)"/>
+          <path d="M564 562 L706 562" stroke="url(#ig5g)" stroke-width="52" stroke-linecap="round" filter="url(#ib5)"/>
+        </svg>
+        <div class="icon-item-label">Settings · 29×29</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       03 — SPLASH SCREEN
+  ════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">03</div>
+    <div class="section-title">Splash Screen</div>
+    <div class="section-sub">Erster Eindruck beim App-Start. Ruhig, fokussiert, mit subtiler Tiefe durch das Grid-Pattern. Der Loader signalisiert Aktivität ohne Unruhe.</div>
+
+    <div style="display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap">
+      <div class="splash-preview">
+        <div class="splash-grid-lines"></div>
+        <div class="splash-glow"></div>
+        <div class="splash-content">
+          <svg width="72" height="72" viewBox="0 0 96 96" fill="none">
+            <defs>
+              <filter id="splash-gf"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <linearGradient id="splash-g" x1="16" y1="76" x2="80" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2ABD6E"/><stop offset="100%" stop-color="#3DDD84"/></linearGradient>
+            </defs>
+            <path d="M48 14 L16 76" stroke="url(#splash-g)" stroke-width="5" stroke-linecap="round" filter="url(#splash-gf)"/>
+            <path d="M48 14 L80 76" stroke="url(#splash-g)" stroke-width="5" stroke-linecap="round" filter="url(#splash-gf)"/>
+            <path d="M30 54 L44 54" stroke="url(#splash-g)" stroke-width="4" stroke-linecap="round" filter="url(#splash-gf)"/>
+            <circle cx="48" cy="54" r="3.5" fill="#3DDD84" filter="url(#splash-gf)"/>
+            <path d="M52 54 L66 54" stroke="url(#splash-g)" stroke-width="4" stroke-linecap="round" filter="url(#splash-gf)"/>
+          </svg>
+          <div style="font-family:'DM Mono',monospace; font-size:20px; font-weight:500; letter-spacing:6px; color:#F0F0F0">AU<span style="color:#3DDD84">R</span>A</div>
+          <div class="splash-tagline">dein KI-Assistent</div>
+          <div class="splash-loader">
+            <div class="splash-dot"></div>
+            <div class="splash-dot"></div>
+            <div class="splash-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="max-width:300px; padding-top:20px">
+        <div style="font-family:var(--mono); font-size:9px; letter-spacing:3px; color:var(--text-3); margin-bottom:20px; text-transform:uppercase">Spezifikation</div>
+        <table style="width:100%; border-collapse:collapse">
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 0; font-size:12px; color:var(--text-2)">Hintergrund</td><td style="padding:10px 0; font-family:var(--mono); font-size:11px; color:var(--text-3); text-align:right">#0A0A0A</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 0; font-size:12px; color:var(--text-2)">Logo-Größe</td><td style="padding:10px 0; font-family:var(--mono); font-size:11px; color:var(--text-3); text-align:right">72×72px</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 0; font-size:12px; color:var(--text-2)">Wordmark</td><td style="padding:10px 0; font-family:var(--mono); font-size:11px; color:var(--text-3); text-align:right">DM Mono · 20px · 6px LS</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 0; font-size:12px; color:var(--text-2)">Grid Pattern</td><td style="padding:10px 0; font-family:var(--mono); font-size:11px; color:var(--text-3); text-align:right">64px · 4% grün</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 0; font-size:12px; color:var(--text-2)">Glow</td><td style="padding:10px 0; font-family:var(--mono); font-size:11px; color:var(--text-3); text-align:right">Radial · 300px · 15%</td></tr>
+          <tr><td style="padding:10px 0; font-size:12px; color:var(--text-2)">Loader</td><td style="padding:10px 0; font-family:var(--mono); font-size:11px; color:var(--text-3); text-align:right">3 Dots · 1.4s · stagger</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       04 — FARBEN
+  ════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">04</div>
+    <div class="section-title">Farbpalette</div>
+    <div class="section-sub">Kontrolliert. Drei Primärfarben, Rest ist Schicht-System. Grün als einzige Akzentfarbe — sparsam eingesetzt, sofort erkennbar.</div>
+
+    <!-- Gradient strip -->
+    <div class="palette">
+      <div class="swatch" style="background:#0A0A0A"></div>
+      <div class="swatch" style="background:#111111"></div>
+      <div class="swatch" style="background:#181818"></div>
+      <div class="swatch" style="background:#252525"></div>
+      <div class="swatch" style="background:#333333"></div>
+      <div class="swatch" style="background:#888888"></div>
+      <div class="swatch" style="background:#1A8A4E"></div>
+      <div class="swatch" style="background:#2ABD6E"></div>
+      <div class="swatch" style="background:#3DDD84"></div>
+      <div class="swatch" style="background:#5AEDAA"></div>
+    </div>
+
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-preview" style="background:#0A0A0A"></div>
+        <div class="color-info">
+          <div class="color-name">Black</div>
+          <div class="color-hex">#0A0A0A</div>
+          <div class="color-usage">App Background</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-preview" style="background:#181818"></div>
+        <div class="color-info">
+          <div class="color-name">Surface</div>
+          <div class="color-hex">#181818</div>
+          <div class="color-usage">Cards, Panels</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-preview" style="background:#252525"></div>
+        <div class="color-info">
+          <div class="color-name">Border</div>
+          <div class="color-hex">#252525</div>
+          <div class="color-usage">Divider, Outlines</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-preview" style="background:#F0F0F0"></div>
+        <div class="color-info">
+          <div class="color-name">Text Primary</div>
+          <div class="color-hex">#F0F0F0</div>
+          <div class="color-usage">Headlines, Body</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-preview" style="background:#888888"></div>
+        <div class="color-info">
+          <div class="color-name">Text Secondary</div>
+          <div class="color-hex">#888888</div>
+          <div class="color-usage">Descriptions, Meta</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-preview" style="background:linear-gradient(135deg,#2ABD6E,#3DDD84)"></div>
+        <div class="color-info">
+          <div class="color-name">Green Primary</div>
+          <div class="color-hex">#3DDD84</div>
+          <div class="color-usage">CTAs, Accents, Logo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       05 — TYPOGRAFIE
+  ════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">05</div>
+    <div class="section-title">Typografie</div>
+    <div class="section-sub">Zwei Schriften, klare Rollen. DM Sans für alles Menschliche, DM Mono für alles Technische. Beide aus der gleichen Familie — visuell kohärent.</div>
+
+    <div class="type-grid">
+      <div class="type-sample">
+        <div class="type-meta">DM Mono · Logo / Wordmark · 22px · Letter-Spacing 6px</div>
+        <div style="font-family:'DM Mono',monospace; font-size:36px; font-weight:500; letter-spacing:8px; color:#F0F0F0">AU<span style="color:#3DDD84">R</span>A</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">DM Sans · Display · 700 · 32px</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:32px; font-weight:700; color:#F0F0F0; letter-spacing:-0.5px">Der klügste Assistent,<br>den du je hattest.</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">DM Mono · Labels / Tags · 500 · 10px · Letter-Spacing 3px</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap">
+          <span style="font-family:'DM Mono',monospace; font-size:10px; font-weight:500; letter-spacing:3px; color:#3DDD84; text-transform:uppercase">SKILLS</span>
+          <span style="font-family:'DM Mono',monospace; font-size:10px; font-weight:500; letter-spacing:3px; color:#888; text-transform:uppercase">KONNEKTOREN</span>
+          <span style="font-family:'DM Mono',monospace; font-size:10px; font-weight:500; letter-spacing:3px; color:#3DDD84; text-transform:uppercase">v0.1.0</span>
+        </div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">DM Sans · Body · 400 · 15px · Line-Height 1.65</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:15px; color:#888; line-height:1.65; max-width:500px">Aura verbindet die besten KI-Modelle der Welt mit deinen Alltags-Apps — einfach einrichten, mächtig im Einsatz. Deine Daten bleiben auf deinem Gerät.</div>
+      </div>
+      <div class="type-sample">
+        <div class="type-meta">DM Mono · Code / Keys · 400 · 13px</div>
+        <div style="font-family:'DM Mono',monospace; font-size:13px; color:#3DDD84">sk-or-v1-a7f3c92e...  //  claude-3.5-sonnet  //  0.7 temp  //  4096 tokens</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       06 — DO / DON'T
+  ════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">06</div>
+    <div class="section-title">Logo Guidelines</div>
+    <div class="section-sub">Wie das Logo richtig und falsch eingesetzt wird.</div>
+
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="do-label">✓ DO</div>
+        <div class="do-item"><span style="color:var(--green)">→</span> Auf dunklem Hintergrund mit Grün-Gradient</div>
+        <div class="do-item"><span style="color:var(--green)">→</span> Reversed (schwarz) auf grünem Hintergrund</div>
+        <div class="do-item"><span style="color:var(--green)">→</span> Monochrom weiß auf beliebigem dunklen Bg</div>
+        <div class="do-item"><span style="color:var(--green)">→</span> Ausreichend Weißraum (Mindestabstand = Logo-Höhe × 0.5)</div>
+        <div class="do-item"><span style="color:var(--green)">→</span> Proportional skalieren</div>
+        <div class="do-item"><span style="color:var(--green)">→</span> Mindestgröße: 20px Höhe</div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-label">✕ DON'T</div>
+        <div class="dont-item"><span style="color:#ff6060">→</span> Auf hellem Hintergrund ohne Kontrast-Anpassung</div>
+        <div class="dont-item"><span style="color:#ff6060">→</span> Logo verzerren oder drehen</div>
+        <div class="dont-item"><span style="color:#ff6060">→</span> Andere Farben als die Brand-Palette verwenden</div>
+        <div class="dont-item"><span style="color:#ff6060">→</span> Den Signal-Punkt (•) entfernen — das ist das einzigartige Merkmal</div>
+        <div class="dont-item"><span style="color:#ff6060">→</span> Outline/Stroke-Variante auf dem Logo</div>
+        <div class="dont-item"><span style="color:#ff6060">→</span> Schatten oder Drop-Shadow hinzufügen</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       07 — EXPORT SPECS
+  ════════════════════════════════ -->
+  <div class="section">
+    <div class="section-label">07</div>
+    <div class="section-title">Export für App Store</div>
+    <div class="section-sub">Alle benötigten Formate und Größen für iOS App Store Submission via EAS.</div>
+
+    <div class="export-grid">
+      <div class="export-card">
+        <div class="export-icon">🖼</div>
+        <div class="export-title">App Icon</div>
+        <div class="export-detail">
+          icon.png → 1024×1024px<br>
+          PNG, kein Alpha-Kanal<br>
+          assets/icon.png<br>
+          iOS rundet selbst ab
+        </div>
+      </div>
+      <div class="export-card">
+        <div class="export-icon">✨</div>
+        <div class="export-title">Splash Screen</div>
+        <div class="export-detail">
+          splash.png → 1284×2778px<br>
+          PNG mit Alpha OK<br>
+          assets/splash.png<br>
+          backgroundColor: #0A0A0A
+        </div>
+      </div>
+      <div class="export-card">
+        <div class="export-icon">🤖</div>
+        <div class="export-title">Android Adaptive</div>
+        <div class="export-detail">
+          adaptive-icon.png → 1024×1024px<br>
+          Motiv in 66% Safe Zone<br>
+          assets/adaptive-icon.png<br>
+          backgroundColor: #0A0A0A
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px; padding:20px; background:var(--surface); border:1px solid var(--border); border-radius:12px">
+      <div style="font-family:var(--mono); font-size:9px; letter-spacing:2px; color:var(--text-3); margin-bottom:12px; text-transform:uppercase">app.json Eintrag</div>
+      <pre style="font-family:var(--mono); font-size:12px; color:#3DDD84; line-height:1.7">{
+  "icon": "./assets/icon.png",
+  "splash": {
+    "image": "./assets/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#0A0A0A"
+  }
+}</pre>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
