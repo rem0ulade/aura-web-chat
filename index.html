@@ -1,135 +1,76 @@
 <!DOCTYPE html>
-<html lang=de>
+<html lang="de">
 <head>
-  <meta charset=UTF-8>
-  <meta name=viewport content=width=device-width, initial-scale=1.0>
-  <title>Aura - Chat</title>
-  <link rel=stylesheet href=style.css>
-  <link rel=preconnect href=https://fonts.googleapis.com>
-  <link rel=preconnect href=https://fonts.gstatic.com crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel=stylesheet>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Desktop</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class=app-container>
-    <aside class=sidebar>
-      <div class=sidebar-header>
-        <div class=logo>
-          <span class=logo-text style="font-family: 'DM Mono', monospace; font-size: 22px; letter-spacing: 6px; color: #F0F0F0;">AU<span style="color: #3DDD84;">R</span>A</span>
-        </div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-mark">AU<span>R</span>A</div>
+        <div class="logo-sub">v0.9.1 - pro</div>
+        <button class="mobile-close" id="mobile-close" aria-label="Menu schliessen">X</button>
       </div>
-      
-      <nav class=sidebar-nav>
-        <div class="nav-section">
-          <div class="nav-section-title">Navigation</div>
-          <ul class="nav-list">
-            <li class="nav-item" data-drawer="history"><span class="nav-icon">📜</span><span class="nav-text">History</span></li>
-            <li class="nav-item"><span class="nav-icon">📁</span><span class="nav-text">Projects</span></li>
-            <li class="nav-item"><span class="nav-icon">➕</span><span class="nav-text">New Chat</span></li>
-          </ul>
+
+      <nav class="sidebar-nav" aria-label="Hauptnavigation">
+        <div class="nav-group">
+          <div class="nav-group-title">Navigation</div>
+          <button class="nav-item is-active" data-screen="chat"><span class="icon">C</span>Chat</button>
+          <button class="nav-item" data-screen="history"><span class="icon">H</span>Historie</button>
+          <button class="nav-item" data-screen="projects"><span class="icon">P</span>Projekte</button>
+          <button class="nav-item" data-screen="newChat"><span class="icon">N</span>Neuer Chat</button>
         </div>
-        
-        <div class="nav-section">
-          <div class="nav-section-title">Aura</div>
-          <ul class="nav-list">
-            <li class="nav-item" data-drawer="personas"><span class="nav-icon">👤</span><span class="nav-text">Personas</span></li>
-            <li class="nav-item"><span class="nav-icon">💾</span><span class="nav-text">Memory</span></li>
-            <li class="nav-item"><span class="nav-icon">⚡</span><span class="nav-text">Skills</span></li>
-          </ul>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Aura</div>
+          <button class="nav-item" data-screen="personas"><span class="icon">U</span>Personas</button>
+          <button class="nav-item" data-screen="memory"><span class="icon">M</span>Erinnerungen</button>
+          <button class="nav-item" data-screen="skills"><span class="icon">S</span>Skills</button>
+          <button class="nav-item" data-screen="agent"><span class="icon">A</span>Agent</button>
+          <button class="nav-item" data-screen="parameter"><span class="icon">T</span>Parameter</button>
         </div>
-        
-        <div class="nav-section">
-          <div class="nav-section-title">Agent</div>
-          <ul class="nav-list">
-            <li class="nav-item" data-drawer="parameter"><span class="nav-icon">⚙️</span><span class="nav-text">Parameter</span></li>
-          </ul>
-        </div>
-        
-        <div class="nav-section">
-          <div class="nav-section-title">Settings</div>
-          <ul class="nav-list">
-            <li class="nav-item"><span class="nav-icon">🔌</span><span class="nav-text">API & Connectors</span></li>
-            <li class="nav-item"><span class="nav-icon">📝</span><span class="nav-text">System Prompt</span></li>
-            <li class="nav-item"><span class="nav-icon">⭐</span><span class="nav-text">Preferred</span></li>
-            <li class="nav-item" data-danger="true"><span class="nav-icon">⚠️</span><span class="nav-text">Dangerzone</span></li>
-          </ul>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Einstellungen</div>
+          <button class="nav-item" data-screen="apiConnectors"><span class="icon">K</span>API & Konnektoren</button>
+          <button class="nav-item" data-screen="systemPrompt"><span class="icon">V</span>System Prompt</button>
+          <button class="nav-item" data-screen="preferred"><span class="icon">E</span>Praeferenzen</button>
+          <button class="nav-item" data-screen="general"><span class="icon">G</span>Allgemein</button>
+          <button class="nav-item nav-danger" data-screen="dangerzone"><span class="icon">!</span>Gefahrenzone</button>
         </div>
       </nav>
-      
-      <div class=sidebar-footer>
-        <div class=user-info>
-          <div class=user-avatar>
-            <span>U</span>
-          </div>
-          <div class=user-details>
-            <span class=user-name>User</span>
-            <span class=user-status>Online</span>
-          </div>
+
+      <footer class="sidebar-footer">
+        <div class="user-pill">
+          <span class="user-avatar">J</span>
+          <span class="user-name">Jona - Pro User</span>
+          <button class="pill-button">Account</button>
         </div>
-      </div>
+      </footer>
     </aside>
-    
-    <main class=chat-main>
-      <header class=chat-header>
-        <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle Sidebar">
-          <svg width=20 height=20 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12h18M3 6h18M3 18h18"></path>
-          </svg>
-        </button>
-        <div class=chat-title>
-          <h1>Chat</h1>
-          <span class=model-badge>GPT-4o</span>
+
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <main class="main-panel">
+      <header class="main-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menu-toggle" aria-label="Menu oeffnen">=</button>
+          <div class="screen-kicker" id="screen-kicker">AURA</div>
+          <h1 class="screen-title" id="screen-title">Chat</h1>
         </div>
-        <div class=chat-actions>
-          <button class=icon-button title=Einstellungen>
-            <svg width=20 height=20 viewBox=0 0 24 24 fill=none stroke=currentColor stroke-width=2>
-              <circle cx=12 cy=12 r=3></circle>
-              <path d=M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42></path>
-            </svg>
-          </button>
-        </div>
+        <div class="header-actions" id="header-actions"></div>
       </header>
-      
-      <div class=chat-messages id=chat-box>
-        <div class=message ai-message>
-          <div class=message-avatar>
-            <span>✦</span>
-          </div>
-          <div class=message-content>
-            <div class=message-text>Hallo! Ich bin Aura. Wie kann ich dir heute helfen?</div>
-            <div class=message-time>Just now</div>
-          </div>
-        </div>
-      </div>
-      
-      <div class=chat-input-area>
-        <div class=input-container>
-          <textarea id=user-input placeholder=Schreibe deine Nachricht... rows=1></textarea>
-          <button id=send-button class=send-button>
-            <svg width=20 height=20 viewBox=0 0 24 24 fill=currentColor>
-              <path d=M2.01 21L23 12 2.01 3 2 10l15 2-15 2z></path>
-            </svg>
-          </button>
-        </div>
-        <div class=input-hint>
-          <span>Drücke Enter zum Senden, Shift+Enter für neue Zeile</span>
-        </div>
-      </div>
+
+      <section id="screen-root" class="screen-root" aria-live="polite"></section>
     </main>
   </div>
-  
-  <div class="drawer-overlay" id="drawer-overlay"></div>
-  <div class="drawer" id="drawer">
-    <div class="drawer-header">
-      <span class="drawer-title" id="drawer-title">Drawer</span>
-      <button class="drawer-close" id="drawer-close">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M18 6L6 18M6 6l12 12"></path>
-        </svg>
-      </button>
-    </div>
-    <div class="drawer-content" id="drawer-content"></div>
-  </div>
-  
-  <script src=script.js></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
